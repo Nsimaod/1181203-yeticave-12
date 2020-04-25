@@ -70,6 +70,11 @@ $goods=[
             <li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
             </li>
+			<?php foreach($cats as $key => $val): ?>
+			<li class="promo__item promo__item--boards">
+			<?= $val ?>
+			</li>
+			<?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
