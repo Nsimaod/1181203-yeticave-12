@@ -72,7 +72,7 @@ $goods=[
             </li>
 			<?php foreach($cats as $key => $val): ?>
 			<li class="promo__item promo__item--boards">
-			<?= $val ?>
+			<div class="promo__link"><?= $val ?></div>
 			</li>
 			<?php endforeach; ?>
         </ul>
