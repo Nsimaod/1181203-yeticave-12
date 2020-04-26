@@ -41,6 +41,7 @@ $goods=[
                  'URL картинки' => 'img/lot-6.jpg'
             ]
         ];
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -84,7 +85,6 @@ $goods=[
                     </li>
                 </ul>
             <?php endif; ?>
-
         </nav>
     </div>
 </header>
