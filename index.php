@@ -45,8 +45,10 @@ $goods=[
 function format_price(float $input): string
 {
     $output=ceil($input);
-    /* if($output >= 1000) */
-    $output = number_format($output, 0, ',', ' ');
+    if($output >= 1000)
+    {
+        $output = number_format($output, 0, ',', ' ');
+    }
     $output=$output.' ₽';
     return $output;
 }
