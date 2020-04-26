@@ -94,7 +94,7 @@ $goods=[
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount"><?= $val['Цена'] ?></span>
-                            <span class="lot__cost">цена<b class="rub">р</b></span>
+                            <span class="lot__cost"><?= $val['Цена'] ?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
@@ -112,9 +112,11 @@ $goods=[
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
+			<?php foreach($cat as $key => $val): ?>
             <li class="nav__item">
-                <a href="pages/all-lots.html">Название категории</a>
+                <a href="pages/all-lots.html"><?= $val ?></a>
             </li>
+			<?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
