@@ -72,7 +72,7 @@ $goods=[
             </li> -->
 			<?php foreach($cats as $key => $val): ?>
 			<li class="promo__item promo__item--boards">
-			<div class="promo__link"><?= $val ?></div>
+			<a class="promo__link" href="pages/all-lots.html"><?= $val ?></a>
 			</li>
 			<?php endforeach; ?>
         </ul>
