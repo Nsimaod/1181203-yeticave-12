@@ -45,10 +45,8 @@ $goods=[
 function format_price(float $input): string
 {
     $output=ceil($input);
-    if($output >= 1000)
-    {
-        $output = number_format($output, 0, ',', ' ');
-    }
+    /* if($output >= 1000) */
+    $output = number_format($output, 0, ',', ' ');
     $output=$output.' ₽';
     return $output;
 }
@@ -132,9 +130,8 @@ function format_price(float $input): string
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= $val['Название'] ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?= format_price((float)($val['Цена'])) ?></span>
-                            <!-- <span class="lot__amount"><?= format_price($val['Цена']) ?></span> -->
-                            <span class="lot__cost"><?= format_price((float)($val['Цена'])) ?></span>
+                            <span class="lot__amount"><?= format_price($val['Цена']) ?></span>
+                            <span class="lot__cost"><?= format_price($val['Цена']) ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
