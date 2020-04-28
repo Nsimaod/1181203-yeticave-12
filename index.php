@@ -52,28 +52,6 @@ $goods=[
             ],
         ];
 
-function format_price(float $input): string
-{
-    $output=ceil($input);
-    /* if($output >= 1000) */
-    $output = number_format($output, 0, ',', ' ');
-    $output .= ' ₽';
-    return $output;
-}
-
-
-function get_time_left(string $deadline): array
-{
-    date_default_timezone_set('Europe/Moscow');
-    $deadlineU=strtotime($deadline);
-    $nowU=time();
-    $diff=$deadlineU - $nowU;
-    $hoursLeft=floor($diff/3600);
-    $minutesLeft=floor(($diff-($hoursLeft*3600))/60);
-    $hoursLeft=str_pad($hoursLeft, 2, "0", STR_PAD_LEFT);
-    $minutesLeft=str_pad($minutesLeft, 2, "0", STR_PAD_LEFT);
-    return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
-}
 
 $main_text=include_template('main.php', ['cats'=>$cats, 'goods'=>$goods]);
 print include_template('layout.php', ['auth'=>$is_auth, 'user'=>$user_name,'main'=> $main_text, 'title'=>$title, 'cats'=>$cats]);
