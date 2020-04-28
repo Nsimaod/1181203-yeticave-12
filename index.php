@@ -54,6 +54,6 @@ function format_price(float $input): string
 
 require_once('helpers.php');
 
-$main_text=include_template('main.php', ['cats'=>$cats, 'goods'=>$goods]);
-print(include_template('layout.php', ['auth'=>$is_auth, 'user'=>$user_name,'mtext'=> $main_text, 'title'=>$title, 'cats'=>$cats]));
+$main_text=include_template('main.php', ['acats'=>$cats, 'agoods'=>$goods]);
+print include_template('layout.php', ['aauth'=>$is_auth, 'auser'=>$user_name,'amain'=> $main_text, 'atitle'=>$title, 'acats'=>$cats]);
 ?>

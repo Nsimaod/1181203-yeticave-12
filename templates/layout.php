@@ -1,14 +1,9 @@
-<?php
-$user_name=$data['user'];
-$is_auth=$data['auth'];
-$title=$data['title'];
-$cats=$data['cats'];
-?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?= htmlspecialchars($title) ?></title>
+    <title><?= htmlspecialchars($atitle) ?></title>
     <link href="../css/normalize.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
@@ -30,9 +25,9 @@ $cats=$data['cats'];
         <nav class="user-menu">
 
         <!-- здесь должен быть PHP код для показа меню и данных пользователя -->
-            <?php if($is_auth == 1): ?>
+            <?php if($aauth == 1): ?>
                 <div class="user-menu__logged">
-                    <p><?= htmlspecialchars($user_name) ?></p>
+                    <p><?= htmlspecialchars($auser) ?></p>
                     <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
                     <a class="user-menu__logout" href="#">Выход</a>
                 </div>
@@ -49,14 +44,14 @@ $cats=$data['cats'];
         </nav>
     </div>
 </header>
-<?php print($data['mtext']); ?>
+<?php print $amain; ?>
 </div>
 
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <?php foreach($cats as $val): ?>
+            <?php foreach($acats as $val): ?>
             <li class="nav__item">
                 <a href="pages/all-lots.html"><?= htmlspecialchars($val) ?></a>
             </li>

@@ -7,11 +7,7 @@
             <!--<li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
             </li> -->
-            <?php
-            $cats=$data['cats'];
-            $goods=$data['goods'];
-            foreach($cats as $val):
-            ?>
+            <?php foreach($acats as $val): ?>
             <li class="promo__item promo__item--boards">
             <a class="promo__link" href="pages/all-lots.html"><?= htmlspecialchars($val) ?></a>
             </li>
@@ -24,7 +20,7 @@
         </div>
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
-            <?php foreach($goods as $val): ?>
+            <?php foreach($agoods as $val): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
                     <img src="<?= htmlspecialchars($val['URL картинки']) ?>" width="350" height="260" alt="<?= htmlspecialchars($val['Название']) ?>">
