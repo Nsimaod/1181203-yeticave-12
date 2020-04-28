@@ -35,7 +35,7 @@
                         </div>
                         <?php $timeLeft=get_time_left($val['Дата истечения']); ?>
                         <div class="lot__timer timer <?php if ($timeLeft['Hours']==0): ?> timer--finishing <?php endif ?> ">
-                        <?= str_pad($timeLeft['Hours'], 2, "0", STR_PAD_LEFT).':'.str_pad($timeLeft['Minutes'], 2, "0", STR_PAD_LEFT) ?>
+                        <?= $timeLeft['Hours'].':'.$timeLeft['Minutes'] ?>
                         </div>
                     </div>
                 </div>

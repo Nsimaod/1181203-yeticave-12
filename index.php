@@ -70,6 +70,8 @@ function get_time_left(string $deadline): array
     $diff=$deadlineU - $nowU;
     $hoursLeft=floor($diff/3600);
     $minutesLeft=floor(($diff-($hoursLeft*3600))/60);
+    $hoursLeft=str_pad($hoursLeft, 2, "0", STR_PAD_LEFT);
+    $minutesLeft=str_pad($minutesLeft, 2, "0", STR_PAD_LEFT);
     return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
 }
 
