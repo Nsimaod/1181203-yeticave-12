@@ -40,8 +40,7 @@
                             {
                                 print ' timer--finishing';
                             }
-                            print '"';
-                            print '>'.$timeLeft['Hours'].':';
+                            print '">'.$timeLeft['Hours'].':';
                             if($timeLeft['Minutes']<10)
                             {
                                 print '0';
