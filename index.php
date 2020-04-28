@@ -24,7 +24,7 @@ $goods=[
                  'Категория' => 'Крепления',
                  'Цена' => 8000,
                  'URL картинки' => 'img/lot-3.jpg',
-                 'Дата истечения' => '2020-04-29',
+                 'Дата истечения' => '2020-04-28 19:00',
             ],
             [
                 'Название' => 'Ботинки для сноуборда DC Mutiny Charocal',
@@ -69,19 +69,33 @@ function get_time_left(string $deadline): array
     $deadlineU=strtotime($deadline);
     $nowU=time();
     $diff=$deadlineU - $nowU;
-    $hoursLeft=0;
-    $minutesLeft=0;
-    while ($diff > 3600)
-    {
-        $hoursLeft=$hoursLeft+1;
-        $diff-=3600;
-    }
-    while ($diff > 60)
-    {
-        $minutesLeft=$minutesLeft+1;
-        $diff-=60;
-    }
+    $hoursLeft=floor($diff/3600);
+    $minutesLeft=floor(($diff-($hoursLeft*3600))/60);
     return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
 }
 
 ?>
+<!--
+function get_time_left(string $deadline): array
+{
+date_default_timezone_set('Europe/Moscow');
+$deadlineU=strtotime($deadline);
+$nowU=time();
+$diff=$deadlineU - $nowU;
+$hoursLeft=0;
+$minutesLeft=0;
+while ($diff > 3600)
+{
+$hoursLeft=$hoursLeft+1;
+$diff-=3600;
+}
+while ($diff > 60)
+{
+$minutesLeft=$minutesLeft+1;
+$diff-=60;
+}
+return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
+}
+
+?>
+-->
