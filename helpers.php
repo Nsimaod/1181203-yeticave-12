@@ -143,6 +143,30 @@ function include_template($name, array $data = []) {
     return $result;
 }
 
+/*
+function get_time_left(string $deadline): array
+{
+date_default_timezone_set('Europe/Moscow');
+$deadlineU=strtotime($deadline);
+$nowU=time();
+$diff=$deadlineU - $nowU;
+$hoursLeft=0;
+$minutesLeft=0;
+while ($diff > 3600)
+{
+$hoursLeft=$hoursLeft+1;
+$diff-=3600;
+}
+while ($diff > 60)
+{
+$minutesLeft=$minutesLeft+1;
+$diff-=60;
+}
+return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
+}
+*/
+
+
 function format_price(float $input): string
 {
     $output=ceil($input);
@@ -166,3 +190,4 @@ function get_time_left(string $deadline): array
     return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
 }
 
+?>

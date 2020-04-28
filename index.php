@@ -57,27 +57,3 @@ $main_text=include_template('main.php', ['cats'=>$cats, 'goods'=>$goods]);
 print include_template('layout.php', ['auth'=>$is_auth, 'user'=>$user_name,'main'=> $main_text, 'title'=>$title, 'cats'=>$cats]);
 
 ?>
-<!--
-function get_time_left(string $deadline): array
-{
-date_default_timezone_set('Europe/Moscow');
-$deadlineU=strtotime($deadline);
-$nowU=time();
-$diff=$deadlineU - $nowU;
-$hoursLeft=0;
-$minutesLeft=0;
-while ($diff > 3600)
-{
-$hoursLeft=$hoursLeft+1;
-$diff-=3600;
-}
-while ($diff > 60)
-{
-$minutesLeft=$minutesLeft+1;
-$diff-=60;
-}
-return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
-}
-
-?>
--->
