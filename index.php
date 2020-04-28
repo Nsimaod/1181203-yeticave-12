@@ -1,9 +1,12 @@
 <?php
+include 'helpers.php';
+
 $is_auth = rand(0, 1);
 
 $user_name = 'Achez'; // укажите здесь ваше имя
 $title='Yeti Cave';
 $cats=['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];
+
 $goods=[
             [
                 'Название' => '2014 Rossignol District Snowboard',
@@ -24,7 +27,7 @@ $goods=[
                  'Категория' => 'Крепления',
                  'Цена' => 8000,
                  'URL картинки' => 'img/lot-3.jpg',
-                 'Дата истечения' => '2020-04-28 19:00',
+                 'Дата истечения' => '2020-04-28',
             ],
             [
                 'Название' => 'Ботинки для сноуборда DC Mutiny Charocal',
@@ -58,10 +61,6 @@ function format_price(float $input): string
     return $output;
 }
 
-include 'helpers.php';
-
-$main_text=include_template('main.php', ['cats'=>$cats, 'goods'=>$goods]);
-print include_template('layout.php', ['auth'=>$is_auth, 'user'=>$user_name,'main'=> $main_text, 'title'=>$title, 'cats'=>$cats]);
 
 function get_time_left(string $deadline): array
 {
@@ -73,6 +72,9 @@ function get_time_left(string $deadline): array
     $minutesLeft=floor(($diff-($hoursLeft*3600))/60);
     return ['Hours'=>$hoursLeft, 'Minutes'=>$minutesLeft];
 }
+
+$main_text=include_template('main.php', ['cats'=>$cats, 'goods'=>$goods]);
+print include_template('layout.php', ['auth'=>$is_auth, 'user'=>$user_name,'main'=> $main_text, 'title'=>$title, 'cats'=>$cats]);
 
 ?>
 <!--

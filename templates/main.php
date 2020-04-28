@@ -40,12 +40,7 @@
                             {
                                 print ' timer--finishing';
                             }
-                            print '">'.$timeLeft['Hours'].':';
-                            if($timeLeft['Minutes']<10)
-                            {
-                                print '0';
-                            }
-                            print $timeLeft['Minutes'];
+                            print '">'.str_pad($timeLeft['Hours'], 2, "0", STR_PAD_LEFT).':'.str_pad($timeLeft['Minutes'], 2, "0", STR_PAD_LEFT);
                         ?>
                         </div>
                     </div>
