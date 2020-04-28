@@ -33,8 +33,16 @@
                             <span class="lot__amount"><?= format_price($val['Цена']) ?></span>
                             <span class="lot__cost"><?= format_price($val['Цена']) ?></span>
                         </div>
-                        <div class="lot__timer timer">
-                            12:23
+                        <div class="lot__timer timer
+                        <?php
+                            $timeLeft=get_time_left($val['Дата истечения']);
+                            if($timeLeft['Hours']==0)
+                            {
+                                print ' timer--finishing';
+                            }
+                            print '"';
+                            print '>'.$timeLeft['Hours'].':'.$timeLeft['Minutes'];
+                        ?>
                         </div>
                     </div>
                 </div>
