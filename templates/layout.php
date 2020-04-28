@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?= htmlspecialchars($atitle) ?></title>
+    <title><?= htmlspecialchars($title) ?></title>
     <link href="../css/normalize.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
@@ -25,9 +24,9 @@
         <nav class="user-menu">
 
         <!-- здесь должен быть PHP код для показа меню и данных пользователя -->
-            <?php if($aauth == 1): ?>
+            <?php if($auth == 1): ?>
                 <div class="user-menu__logged">
-                    <p><?= htmlspecialchars($auser) ?></p>
+                    <p><?= htmlspecialchars($user) ?></p>
                     <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
                     <a class="user-menu__logout" href="#">Выход</a>
                 </div>
@@ -44,14 +43,14 @@
         </nav>
     </div>
 </header>
-<?php print $amain; ?>
+<?php print $main ?>
 </div>
 
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <?php foreach($acats as $val): ?>
+            <?php foreach($cats as $val): ?>
             <li class="nav__item">
                 <a href="pages/all-lots.html"><?= htmlspecialchars($val) ?></a>
             </li>
