@@ -18,9 +18,9 @@ CREATE TABLE lot
   name VARCHAR(255),
   description VARCHAR(1000),
   image VARCHAR(255),
-  start_price NUMERIC(12,2) NOT NULL,
+  start_price DECIMAL(12,2) NOT NULL,
   expiration_date DATETIME NOT NULL,
-  bid_step NUMERIC(6,2),
+  bid_step DECIMAL(6,2),
   author_id int NOT NULL,
   winner_id int NOT NULL,
   category_id int NOT NULL
@@ -30,7 +30,7 @@ CREATE TABLE bid
 (
   id int PRIMARY KEY auto_increment,
   bid_date DATETIME,
-  bid_amount NUMERIC(12,2),
+  bid_amount DECIMAL(12,2),
   user_id int NOT NULL,
   lot_id int NOT NULL
 );
