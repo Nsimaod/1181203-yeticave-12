@@ -35,7 +35,7 @@ CREATE TABLE bid
   lot_id int NOT NULL
 );
 
-CREATE TABLE t_user
+CREATE TABLE user
 (
   id int PRIMARY KEY auto_increment,
   reg_date DATETIME,
@@ -54,5 +54,5 @@ CREATE INDEX i_lot_by_category ON lot(category_id);
 CREATE INDEX i_bid_by_date ON bid(bid_date);
 CREATE INDEX i_bid_by_bidder ON bid(user_id);
 CREATE INDEX i_bid_by_lot ON bid(lot_id);
-CREATE INDEX i_user_by_email ON t_user(email);
-CREATE INDEX i_user_by_name ON t_user(name);
+CREATE INDEX i_user_by_email ON user(email);
+CREATE INDEX i_user_by_name ON user(name);
