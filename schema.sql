@@ -52,7 +52,7 @@ CREATE TABLE user
   `name` varchar(255) NOT NULL,
   `code` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `cat_by_code` (`code`)
+  KEY `code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
  CREATE TABLE `lot` (
@@ -68,12 +68,12 @@ CREATE TABLE user
   `winner_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `lot_by_date` (`creation_date`),
-  KEY `lot_by_exp` (`expiration_date`),
-  KEY `lot_by_name` (`name`),
-  KEY `lot_by_author` (`author_id`),
-  KEY `lot_by_winner` (`winner_id`),
-  KEY `lot_by_category` (`category_id`)
+  KEY `date` (`creation_date`),
+  KEY `exp` (`expiration_date`),
+  KEY `name` (`name`),
+  KEY `author` (`author_id`),
+  KEY `winner` (`winner_id`),
+  KEY `category` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
  
 CREATE TABLE `bid` (
@@ -83,9 +83,9 @@ CREATE TABLE `bid` (
   `user_id` int(11) NOT NULL,
   `lot_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `bid_by_date` (`bid_date`),
-  KEY `bid_by_bidder` (`user_id`),
-  KEY `bid_by_lot` (`lot_id`)
+  KEY `date` (`bid_date`),
+  KEY `bidder` (`user_id`),
+  KEY `lot` (`lot_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `user` (
