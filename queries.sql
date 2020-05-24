@@ -36,3 +36,5 @@ SELECT L.name, image, start_price, expiration_date, C.name FROM lot L JOIN categ
 UPDATE lot SET name='Самый глупый способ потратить 160к рублей' WHERE id=2;
 /*получить список ставок для лота по его идентификатору с сортировкой по дате.*/
 SELECT L.name, B.bid_amount, B.bid_date FROM lot L JOIN bid B ON B.lot_id=L.id WHERE L.id=1 ORDER BY B.bid_date;
+/* то же самое без имени лота*/
+SELECT bid_amount, bid_date FROM bid WHERE lot_id=1 ORDER BY bid_date;
