@@ -20,5 +20,12 @@ INSERT INTO lot (name, image, start_price, expiration_date, bid_step, author_id,
 
 INSERT INTO bid (bid_amount, user_id, lot_id) VALUES (12000, 1, 1);
 INSERT INTO bid (bid_amount, user_id, lot_id) VALUES (9500, 2, 3);
+INSERT INTO bid (bid_amount, user_id, lot_id) VALUES (13000, 2, 1);
+INSERT INTO bid (bid_amount, user_id, lot_id) VALUES (10000, 1, 5);
+INSERT INTO bid (bid_amount, user_id, lot_id) VALUES (11000, 3, 5);
 
 SELECT * FROM category ORDER BY name;
+/* убрать creation_date после отладки */
+SELECT L.name, start_price, image, creation_date, C.name FROM lot L JOIN category C ON L.category_id = C.id WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY creation_date DESC  LIMIT 3;
+SELECT L.name, start_price, image, creation_date, C.name, (SELECT bid_amount FROM bid WHERE lot_id=L.id ORDER BY bid_date DESC LIMIT 1) FROM lot L JOIN category C ON L.category_id = C.id WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY creation_date DESC  LIMIT 3;
+SELECT bid_amount FROM bid WHERE lot_id=1 ORDER BY bid_date DESC LIMIT 1;
