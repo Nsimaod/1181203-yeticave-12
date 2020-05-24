@@ -9,7 +9,7 @@ USE yeticave;
   `name` varchar(255) NOT NULL,
   `code` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `code` (`code`)
+  UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
  CREATE TABLE `lot` (
@@ -22,7 +22,7 @@ USE yeticave;
   `expiration_date` datetime NOT NULL,
   `bid_step` decimal(6,2) NOT NULL,
   `author_id` int(11) NOT NULL,
-  `winner_id` int(11) NOT NULL,
+  `winner_id` int(11),
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `date` (`creation_date`),
