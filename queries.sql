@@ -28,6 +28,4 @@ INSERT INTO bid (bid_amount, user_id, lot_id, bid_date) VALUES (8500, 3, 6, '202
 
 SELECT * FROM category ORDER BY name;
 /* убрать creation_date после отладки */
-SELECT L.name, start_price, image, creation_date, C.name FROM lot L JOIN category C ON L.category_id = C.id WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY creation_date DESC  LIMIT 3;
-SELECT L.name, start_price, image, creation_date, C.name, (SELECT bid_amount FROM bid WHERE lot_id=L.id ORDER BY bid_date DESC LIMIT 1) FROM lot L JOIN category C ON L.category_id = C.id WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY creation_date DESC  LIMIT 3;
-SELECT bid_amount FROM bid WHERE lot_id=1 ORDER BY bid_date DESC LIMIT 1;
+SELECT L.name, start_price, image, C.name, (SELECT bid_amount FROM bid WHERE lot_id=L.id ORDER BY bid_date DESC LIMIT 1) FROM lot L JOIN category C ON L.category_id = C.id WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY creation_date DESC  LIMIT 3;
