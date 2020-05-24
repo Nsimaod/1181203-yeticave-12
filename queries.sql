@@ -26,6 +26,13 @@ INSERT INTO bid (bid_amount, user_id, lot_id, bid_date) VALUES (11000, 2, 5, '20
 INSERT INTO bid (bid_amount, user_id, lot_id, bid_date) VALUES (8000, 2, 6, '2020-05-24 13:05:00');
 INSERT INTO bid (bid_amount, user_id, lot_id, bid_date) VALUES (8500, 3, 6, '2020-05-24 13:06:00');
 
+/*получить все категории;*/
 SELECT * FROM category ORDER BY name;
-/* убрать creation_date после отладки */
-SELECT L.name, start_price, image, C.name, (SELECT bid_amount FROM bid WHERE lot_id=L.id ORDER BY bid_date DESC LIMIT 1) FROM lot L JOIN category C ON L.category_id = C.id WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY creation_date DESC  LIMIT 3;
+/*получить самые новые, открытые лоты. Каждый лот должен включать название, стартовую цену, ссылку на изображение, текущую цену, название категории;*/
+SELECT L.name, start_price, image, C.name, (SELECT bid_amount FROM bid WHERE lot_id=L.id ORDER BY bid_date DESC LIMIT 1) last_bid FROM lot L JOIN category C ON L.category_id = C.id WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY creation_date DESC  LIMIT 3;
+/*показать лот по его id. Получите также название категории, к которой принадлежит лот;*/
+SELECT L.name, image, start_price, expiration_date, C.name FROM lot L JOIN category C ON L.category_id=C.id WHERE L.id=1 ORDER BY L.name
+/*обновить название лота по его идентификатору;*/
+UPDATE lot SET name='Самый глупый способ потратить 160к рублей' WHERE id=2;
+/*получить список ставок для лота по его идентификатору с сортировкой по дате.*/
+SELECT L.name, B.bid_amount, B.bid_date FROM lot L JOIN bid B ON B.lot_id=L.id WHERE L.id=1 ORDER BY B.bid_date;
