@@ -17,6 +17,7 @@ INSERT INTO lot (name, image, start_price, expiration_date, bid_step, author_id,
 INSERT INTO lot (name, image, start_price, expiration_date, bid_step, author_id, category_id, creation_date) VALUES ('Ботинки для сноуборда DC Mutiny Charocal', 'img/lot-4.jpg', 10999, '2020-05-30 00:00:00', 150, 2, 3, '2020-05-24 12:15:00');
 INSERT INTO lot (name, image, start_price, expiration_date, bid_step, author_id, category_id, creation_date) VALUES ('Куртка для сноуборда DC Mutiny Charocal', 'img/lot-5.jpg', 7500, '2020-05-31 00:00:00', 250, 1, 4, '2020-05-24 12:20:00');
 INSERT INTO lot (name, image, start_price, expiration_date, bid_step, author_id, category_id, creation_date) VALUES ('Маска Oakley Canopy', 'img/lot-6.jpg', 5400, '2020-06-05 00:00:00', 150, 2, 6, '2020-05-24 12:25:00');
+INSERT INTO lot (name, image, start_price, expiration_date, bid_step, author_id, category_id, creation_date) VALUES ('Сноуборд GNU MONEY C2E', 'img/lot-7.jpg', 20990, '2020-06-07 00:00:00', 150, 2, 1, '2020-05-27 14:25:00');
 
 INSERT INTO bid (bid_amount, user_id, lot_id, bid_date) VALUES (12000, 1, 1, '2020-05-24 13:00:00');
 INSERT INTO bid (bid_amount, user_id, lot_id, bid_date) VALUES (9500, 2, 3, '2020-05-24 13:01:00');
