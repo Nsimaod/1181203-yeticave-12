@@ -60,8 +60,15 @@ foreach($rows as $row)
     $image=$row['image'];
     print("<img src=\"$image\" width=\"50px\"><br><hr><br>");
 }
-
-$cats=['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];
+/*заполняем массив $cats*/
+$sql = "SELECT * FROM category";
+$result = mysqli_query($con, $sql);
+$precats = mysqli_fetch_all($result, MYSQLI_ASSOC);
+foreach($precats as $precat)
+{
+    $cats[]=$precat['name'];
+}
+/*$cats=['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];*/
 
 $goods=[
             [
