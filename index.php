@@ -13,11 +13,52 @@ $sql="SELECT id, name, category_id, start_price, image, creation_date, expiratio
 $result = mysqli_query($con, $sql);
 $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+/*Теперь нам нужно извлечь цену и название категории*/
+foreach($rows as $num => $row)
+{
+    /*Начнём с категории*/
+    $cat_id=$row['category_id'];
+    $sql='SELECT name FROM category WHERE id=?';
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $cat_id);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    /*Дописываем элементы в $rows, как будто это были поля в базе*/
+    $rows[$num]['cat_name']=(mysqli_fetch_assoc($res))['name'];
+    $rows[$num]['cat_code']=(mysqli_fetch_assoc($res))['code'];
+    /*Теперь с ценой разбираемся...*/
+    $lot_id=$row['id'];
+    $sql='SELECT * FROM bid WHERE lot_id=?';
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $lot_id);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    $bids = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    if($bids == NULL) /*Ставок нет - показываем стартовую цену*/
+    {
+        $rows[$num]['price']=$row['start_price'];
+    }
+    else
+    { /*Поиск максимальной ставки*/
+        $lowest=$row['start_price'];
+        foreach($bids as $bid)
+        {
+            if($bid['bid_amount'] > $lowest)
+            {
+                $lowest = $bid['bid_amount'];
+            }
+        }
+        $rows[$num]['price']=$lowest;
+    };
+}
+
 foreach($rows as $row)
 {
-    print "id: ".$row['id']. " Name: ".$row['name']." Cat_id: ".$row['category_id']." Created: ".$row['creation_date']." Expires: ".$row['expiration_date'];
+    print "id: ".$row['id']. " Name: ".$row['name']." Cat_name: ".$row['cat_name'];
+    print " Created: ".$row['creation_date']." Expires: ".$row['expiration_date']."<br>";
+    print "Start price: ".$row['start_price']." Current price: ".$row['price'];
     $image=$row['image'];
-    print("<img src=\"$image\" width=\"50px\"><br>");
+    print("<img src=\"$image\" width=\"50px\"><br><hr><br>");
 }
 
 $cats=['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];
