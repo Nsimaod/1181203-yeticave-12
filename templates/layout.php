@@ -50,7 +50,8 @@
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <?php foreach($cats as $val): ?>
+            <?php foreach($cats as $cat):
+                $val=$cat['name']; ?>
             <li class="nav__item">
                 <a href="pages/all-lots.html"><?= htmlspecialchars($val) ?></a>
             </li>
