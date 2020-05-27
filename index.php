@@ -5,6 +5,21 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Achez'; // укажите здесь ваше имя
 $title='Yeti Cave';
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+$con = mysqli_connect("localhost", "root", "Sql20Of30","yeticave");
+mysqli_set_charset($con, "utf8");
+$sql="SELECT id, name, category_id, start_price, image, creation_date, expiration_date FROM lot ORDER BY expiration_date DESC LIMIT 4";
+$result = mysqli_query($con, $sql);
+$rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+foreach($rows as $row)
+{
+    print "id: ".$row['id']. " Name: ".$row['name']." Cat_id: ".$row['category_id']." Created: ".$row['creation_date']." Expires: ".$row['expiration_date'];
+    $image=$row['image'];
+    print("<img src=\"$image\" width=\"50px\"><br>");
+}
+
 $cats=['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];
 
 $goods=[
