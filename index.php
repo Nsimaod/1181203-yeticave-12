@@ -9,7 +9,7 @@ $title='Yeti Cave';
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $con = mysqli_connect("localhost", "root", "Sql20Of30","yeticave");
 mysqli_set_charset($con, "utf8");
-$sql="SELECT id, name, category_id, start_price, image, creation_date, expiration_date FROM lot ORDER BY expiration_date DESC LIMIT 4";
+$sql="SELECT id, name, category_id, start_price, image, creation_date, expiration_date FROM lot WHERE expiration_date >= CURRENT_TIMESTAMP ORDER BY expiration_date DESC LIMIT 4";
 $result = mysqli_query($con, $sql);
 $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
