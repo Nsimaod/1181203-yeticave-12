@@ -5,55 +5,20 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Achez'; // укажите здесь ваше имя
 $title='Yeti Cave';
-$cats=['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];
 
-$goods=[
-            [
-                'Название' => '2014 Rossignol District Snowboard',
-                 'Категория' => 'Доски и лыжи',
-                 'Цена' => 10999,
-                 'URL картинки' => 'img/lot-1.jpg',
-                 'Дата истечения' => '2020-05-01',
-            ],
-            [
-                'Название' => 'DC Ply Mens 2016/2017 Snowboard',
-                 'Категория' => 'Доски и лыжи',
-                 'Цена' => 159999,
-                 'URL картинки' => 'img/lot-2.jpg',
-                 'Дата истечения' => '2020-05-02',
-            ],
-            [
-                'Название' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-                 'Категория' => 'Крепления',
-                 'Цена' => 8000,
-                 'URL картинки' => 'img/lot-3.jpg',
-                 'Дата истечения' => '2020-04-29',
-            ],
-            [
-                'Название' => 'Ботинки для сноуборда DC Mutiny Charocal',
-                 'Категория' => 'Ботинки',
-                 'Цена' => 10999,
-                 'URL картинки' => 'img/lot-4.jpg',
-                 'Дата истечения' => '2020-04-30',
-            ],
-            [
-                'Название' => 'Куртка для сноуборда DC Mutiny Charocal',
-                 'Категория' => 'Одежда	',
-                 'Цена' => 7500,
-                 'URL картинки' => 'img/lot-5.jpg',
-                 'Дата истечения' => '2020-04-28',
-            ],
-            [
-                'Название' => 'Маска Oakley Canopy',
-                 'Категория' => 'Разное',
-                 'Цена' => 5400,
-                 'URL картинки' => 'img/lot-6.jpg',
-                 'Дата истечения' => '2020-05-05',
-            ],
-        ];
+include 'connect.php';
+$sql="SELECT L.name lot_name, start_price, image, C.name cat_name, expiration_date,
+coalesce((SELECT bid_amount FROM bid WHERE lot_id=L.id ORDER BY bid_date DESC LIMIT 1), L.start_price) price
+FROM lot L JOIN category C ON L.category_id = C.id
+WHERE expiration_date >= CURRENT_TIMESTAMP
+ORDER BY creation_date DESC LIMIT 9";
+$result = mysqli_query($con, $sql);
+$goods = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+/*заполняем массив $cats*/
+$sql = "SELECT * FROM category";
+$result = mysqli_query($con, $sql);
+$cats = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 $main_text=include_template('main.php', ['cats'=>$cats, 'goods'=>$goods]);
 print include_template('layout.php', ['auth'=>$is_auth, 'user'=>$user_name,'main'=> $main_text, 'title'=>$title, 'cats'=>$cats]);
-
-?>
