@@ -7,11 +7,9 @@
             <!--<li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
             </li> -->
-            <?php foreach($cats as $cat):
-                $val=$cat['name'];
-                $cl='promo__item--'.$cat['code']; ?>
-            <li class="promo__item <?= htmlspecialchars($cl) ?>">
-            <a class="promo__link" href="pages/all-lots.html"><?= htmlspecialchars($val) ?></a>
+            <?php foreach($cats as $cat): ?>
+            <li class="promo__item promo__item--<?= htmlspecialchars($cat['code']) ?>">
+            <a class="promo__link" href="pages/all-lots.html"><?= htmlspecialchars($cat['name']) ?></a>
             </li>
             <?php endforeach ?>
         </ul>

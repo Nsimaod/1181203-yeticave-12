@@ -8,8 +8,7 @@ $title='Yeti Cave';
 
 include 'connect.php';
 $sql="SELECT L.name lot_name, start_price, image, C.name cat_name, expiration_date,
-coalesce((SELECT bid_amount FROM bid WHERE lot_id=L.id
-ORDER BY bid_date DESC LIMIT 1), L.start_price) price
+coalesce((SELECT bid_amount FROM bid WHERE lot_id=L.id ORDER BY bid_date DESC LIMIT 1), L.start_price) price
 FROM lot L JOIN category C ON L.category_id = C.id
 WHERE expiration_date >= CURRENT_TIMESTAMP
 ORDER BY creation_date DESC LIMIT 9";
