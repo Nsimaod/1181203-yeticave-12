@@ -4,7 +4,9 @@ include 'connect.php';
 $lot_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 if($lot_id != NULL)
 {
-    $sql='SELECT * FROM lot WHERE id = ?';
+    $sql='SELECT l.name lot_name, description, image, start_price, c.name cat_name, code, bid_step, expiration_date,
+    coalesce((SELECT bid_amount FROM bid WHERE lot_id=l.id ORDER BY bid_date DESC LIMIT 1), start_price) price
+    FROM lot l JOIN category c ON l.category_id = c.id WHERE l.id = ?';
     $stmt = mysqli_prepare($con, $sql);
     mysqli_stmt_bind_param($stmt, 'i', $lot_id);
     mysqli_stmt_execute($stmt);

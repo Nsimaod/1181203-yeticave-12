@@ -9,7 +9,6 @@
 <body>
 
 <div class="page-wrapper">
-
     <header class="main-header">
         <div class="main-header__container container">
             <h1 class="visually-hidden">YetiCave</h1>
@@ -58,13 +57,13 @@
             </ul>
         </nav>
         <section class="lot-item container">
-            <h2>id <?= $data['id'] ?></h2>
+            <h2><?= $data['lot_name'] ?></h2>
             <div class="lot-item__content">
                 <div class="lot-item__left">
                     <div class="lot-item__image">
-                        <img src="../img/lot-image.jpg" width="730" height="548" alt="Сноуборд">
+                        <img src="<?= $data['image'] ?>" width="730" height="548" alt="Сноуборд">
                     </div>
-                    <p class="lot-item__category">Категория: <span>Доски и лыжи</span></p>
+                    <p class="lot-item__category">Категория: <span><?= $data['cat_name'] ?></span></p>
                     <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
                         снег
                         мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
@@ -76,10 +75,25 @@
                         посмотрите на Вашу доску и улыбнитесь, крутая графика от Шона Кливера еще никого не оставляла
                         равнодушным.</p>
                 </div>
+                <div class="lot-item__right">
+                    <div class="lot-item__state">
+                        <div class="lot-item__timer timer">
+                            10:54
+                        </div>
+                        <div class="lot-item__cost-state">
+                            <div class="lot-item__rate">
+                                <span class="lot-item__amount">Текущая цена</span>
+                                <span class="lot-item__cost"><?= $data['price'] ?></span>
+                            </div>
+                            <div class="lot-item__min-cost">
+                                Мин. ставка <span><?= $data['price']+$data['bid_step'] ?> р</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
 </div>
 
 <footer class="main-footer">
