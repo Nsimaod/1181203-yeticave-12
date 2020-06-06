@@ -86,7 +86,7 @@
                                 <span class="lot-item__cost"><?= format_price($data['price']) ?></span>
                             </div>
                             <div class="lot-item__min-cost">
-                                Мин. ставка <span><?= format_price($data['price']+$data['bid_step']) ?> р</span>
+                                Мин. ставка <span><?= format_price($data['price']+$data['bid_step']) ?></span>
                             </div>
                         </div>
                     </div>
