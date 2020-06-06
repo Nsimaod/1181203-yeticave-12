@@ -5,6 +5,7 @@
     <title><?= htmlspecialchars($title) ?></title>
     <link href="../css/normalize.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="../favicon.ico">
 </head>
 <body>
 <div class="page-wrapper">
