@@ -77,16 +77,16 @@
                 </div>
                 <div class="lot-item__right">
                     <div class="lot-item__state">
-                        <div class="lot-item__timer timer">
-                            10:54
+                        <div class="lot__timer timer <?php if ($data['time_left']['Hours'] < 1): ?> timer--finishing <?php endif ?> ">
+                            <?= $data['time_left']['Hours'].':'.$data['time_left']['Minutes'] ?>
                         </div>
                         <div class="lot-item__cost-state">
                             <div class="lot-item__rate">
                                 <span class="lot-item__amount">Текущая цена</span>
-                                <span class="lot-item__cost"><?= $data['price'] ?></span>
+                                <span class="lot-item__cost"><?= format_price($data['price']) ?></span>
                             </div>
                             <div class="lot-item__min-cost">
-                                Мин. ставка <span><?= $data['price']+$data['bid_step'] ?> р</span>
+                                Мин. ставка <span><?= format_price($data['price']+$data['bid_step']) ?> р</span>
                             </div>
                         </div>
                     </div>
