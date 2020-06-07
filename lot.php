@@ -12,8 +12,15 @@ if($lot_id != NULL)
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_assoc($res);
-    $row['time_left']=get_time_left($row['expiration_date']);
-    print include_template('lot_tmpl.php', ['data' => $row]);
+    if($row != NULL)
+    {
+        $row['time_left'] = get_time_left($row['expiration_date']);
+        print include_template('lot_tmpl.php', ['data' => $row]);
+    }
+    else
+    {
+        require 'pages/404.html';
+    }
 }
 else
 {
