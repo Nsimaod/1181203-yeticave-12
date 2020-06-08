@@ -19,10 +19,12 @@ if($lot_id != NULL)
     }
     else
     {
-        require 'pages/404.html';
+        http_response_code(404);
+        include 'pages/404.html';
     }
 }
 else
 {
-    require 'pages/404.html';
+    http_response_code(404);
+    include 'pages/404.html';
 }
